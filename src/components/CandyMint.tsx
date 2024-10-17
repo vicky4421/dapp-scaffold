@@ -9,7 +9,7 @@ import { walletAdapterIdentity } from '@metaplex-foundation/umi-signer-wallet-ad
 import { fetchCandyMachine, mintV2, mplCandyMachine, safeFetchCandyGuard } from '@metaplex-foundation/mpl-candy-machine';
 import { mplTokenMetadata } from '@metaplex-foundation/mpl-token-metadata';
 import { setComputeUnitLimit } from '@metaplex-foundation/mpl-toolbox';
-import * as bs58 from 'bs58'
+import bs58 from 'bs58';
 
 export const CandyMint: FC = () => {
     const { connection } = useConnection();
@@ -64,7 +64,7 @@ export const CandyMint: FC = () => {
             const { signature } = await transaction.sendAndConfirm(umi, {
                 confirm: { commitment: "confirmed" },
             })
-            // const txid = bs58.encode(signature);
+            const txid = bs58.encode(signature);
             console.log('success', `Mint successful!`)
             notify({ type: 'success', message: 'Mint successful!', txid: "" });
             getUserSOLBalance(wallet.publicKey, connection);
